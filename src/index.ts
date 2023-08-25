@@ -1,19 +1,10 @@
 import { Booster } from "./Bosters/boster";
+import { CollectionBooster } from "./Bosters/collectionBooster";
 import { LuckBooster, ILuckBoosterSettings } from "./Bosters/luckBooster";
 import { UniformBooster } from "./Bosters/uniformBooster";
 import { IInventory, ITEMTYPE, RARITY } from "./interfaces";
 import { Item, itemsBase } from "./items";
 
-// Класс бустерпака с обратно пропорциональной вероятностью выпадения предметов
-class CollectionBooster extends UniformBooster {
-  constructor(settings: ILuckBoosterSettings) {
-    super(settings);
-  }
-
-  getBoosterLoot(playerInventory: IInventory): Item[] {
-    // Реализация выдачи предметов с учетом обратно пропорциональной вероятности
-  }
-}
 // коллекция экземпляров бустерпаков, ключ - ID бустерпака
 let boostersBase = {
   1: new Booster({ rarity: RARITY.RARE, numberOfItems: 5 }),
