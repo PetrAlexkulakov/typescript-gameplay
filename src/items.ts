@@ -1,7 +1,7 @@
 import { RARITY, ITEMTYPE, IItemSettings } from "./interfaces";
 
 // Класс предмета
-class Item {
+export class Item {
     name: string;
     rarity: RARITY;
     itemType: ITEMTYPE;
@@ -13,7 +13,7 @@ class Item {
     }
 }
 // База предметов, ключ - ID предмета.
-let itemsBase: {[ID: number]: Item} = {
+export let itemsBase: {[ID: number]: Item} = {
     1: new Item({ name: "Bronze Helmet", rarity: RARITY.COMMON, itemType: ITEMTYPE.HELMET }),
     2: new Item({ name: "Leather Helmet", rarity: RARITY.COMMON, itemType: ITEMTYPE.HELMET }),
     3: new Item({ name: "Wooden Sword", rarity: RARITY.COMMON, itemType: ITEMTYPE.WEAPON }),
