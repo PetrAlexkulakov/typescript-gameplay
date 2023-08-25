@@ -1,18 +1,8 @@
 import { Booster } from "./Bosters/boster";
 import { LuckBooster, ILuckBoosterSettings } from "./Bosters/luckBooster";
+import { UniformBooster } from "./Bosters/uniformBooster";
 import { IInventory, ITEMTYPE, RARITY } from "./interfaces";
 import { Item, itemsBase } from "./items";
-
-// Класс бустерпака равномерного распределения
-class UniformBooster extends LuckBooster {
-  constructor(settings: ILuckBoosterSettings) {
-    super(settings);
-  }
-
-  getBoosterLoot(playerInventory: IInventory): Item[] {
-    // Реализация выдачи предметов с учетом равномерного распределения
-  }
-}
 
 // Класс бустерпака с обратно пропорциональной вероятностью выпадения предметов
 class CollectionBooster extends UniformBooster {

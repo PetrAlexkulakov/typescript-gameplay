@@ -16,10 +16,19 @@ export class LuckBooster extends Booster {
     this.upgradeChance = settings.upgradeChance
   }
 
-  protected isUpgraded(item: Item): boolean {
+  protected isUpgrade(item: Item): boolean {
     const ammountOfItems = Object.keys(RARITY).length / 2 - 1
     const upgradeChance = this.upgradeChance / ( 10 ** item.rarity )
     return Math.random() < upgradeChance && item.rarity !== ammountOfItems
+  }
+
+  protected UpgradeItem(item: Item, id: number): [Item, number] {
+    if(this.isUpgrade(item)) {
+        const rarity = item.rarity + 1;
+        return super.findElementWithRarity(rarity);
+    }
+
+    return [item, id]
   }
 
   getBoosterLoot(playerInventory: IInventory): Item[] {
@@ -27,12 +36,7 @@ export class LuckBooster extends Booster {
     const loot: Item[] = [];
         
     for (let i = 0; i < this.numberOfItems; i++) {
-        let [newItem, itemID] = super.findElement(i)
-        
-        if(this.isUpgraded(newItem)) {
-            const rarity = newItem.rarity + 1;
-            [newItem, itemID] = super.findElementWithRarity(rarity);
-        }
+        let [newItem, itemID] = this.UpgradeItem(...super.findElement(i))
 
         super.pushItemToLootAndPlayerInventory(newItem, itemID, loot, playerInventory);
     }
