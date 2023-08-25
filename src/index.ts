@@ -1,19 +1,7 @@
-import { Booster } from "./boster";
-import { IBoosterSettings, IInventory, ITEMTYPE, RARITY } from "./interfaces";
+import { Booster } from "./Bosters/boster";
+import { LuckBooster, ILuckBoosterSettings } from "./Bosters/luckBooster";
+import { IInventory, ITEMTYPE, RARITY } from "./interfaces";
 import { Item, itemsBase } from "./items";
-
-// Настройки бустерпака удачи
-interface ILuckBoosterSettings extends IBoosterSettings {}
-// Класс бустерпака удачи
-class LuckBooster extends Booster {
-  constructor(settings: ILuckBoosterSettings) {
-    super(settings);
-  }
-
-  getBoosterLoot(playerInventory: IInventory): Item[] {
-    // Реализация выдачи предметов с учетом шанса на повышение редкости
-  }
-}
 
 // Класс бустерпака равномерного распределения
 class UniformBooster extends LuckBooster {
