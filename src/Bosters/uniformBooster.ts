@@ -1,4 +1,4 @@
-import { IInventory, ITEMTYPE, RARITY } from "../interfaces";
+import { IInventory, ITEMTYPE } from "../interfaces";
 import { Item } from "../items";
 import { LuckBooster, ILuckBoosterSettings } from "./luckBooster";
 

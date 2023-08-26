@@ -1,5 +1,5 @@
 import { IInventory } from "../interfaces";
-import { Item, itemsBase } from "../items";
+import { Item } from "../items";
 import { ILuckBoosterSettings } from "./luckBooster";
 import { UniformBooster } from "./uniformBooster";
 

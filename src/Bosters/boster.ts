@@ -1,4 +1,4 @@
-import { RARITY, ITEMTYPE, IInventory } from "../interfaces";
+import { RARITY, IInventory } from "../interfaces";
 import { Item, itemsBase } from "../items";
 
 // Настройки простого бустерпака

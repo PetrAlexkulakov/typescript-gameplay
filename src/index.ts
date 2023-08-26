@@ -1,9 +1,9 @@
 import { Booster } from "./Bosters/boster";
 import { CollectionBooster } from "./Bosters/collectionBooster";
-import { LuckBooster, ILuckBoosterSettings } from "./Bosters/luckBooster";
+import { LuckBooster } from "./Bosters/luckBooster";
 import { UniformBooster } from "./Bosters/uniformBooster";
-import { IInventory, ITEMTYPE, RARITY } from "./interfaces";
-import { Item, itemsBase } from "./items";
+import { IInventory, RARITY } from "./interfaces";
+import { Item } from "./items";
 
 // коллекция экземпляров бустерпаков, ключ - ID бустерпака
 let boostersBase: { [key: number]: Booster | LuckBooster | UniformBooster | CollectionBooster } = {
