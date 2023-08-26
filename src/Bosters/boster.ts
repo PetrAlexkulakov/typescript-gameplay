@@ -63,6 +63,3 @@ export class Booster {
         return loot;
     }
 }
-
-// console.log(new Booster({ rarity: RARITY.RARE, numberOfItems: 5 }).getBoosterLoot({}))
-// console.log(new Booster({ rarity: RARITY.LEGENDARY, numberOfItems: 4 }).getBoosterLoot({}))

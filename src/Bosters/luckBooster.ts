@@ -44,6 +44,3 @@ export class LuckBooster extends Booster {
     return loot;
   }
 }
-
-// console.log( new LuckBooster({ rarity: RARITY.RARE, numberOfItems: 5, upgradeChance: 0.10 }).getBoosterLoot({}))
-// console.log( new LuckBooster({ rarity: RARITY.LEGENDARY, numberOfItems: 4, upgradeChance: 0.45 }).getBoosterLoot({}))

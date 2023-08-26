@@ -1,4 +1,4 @@
-import { IInventory, RARITY } from "../interfaces";
+import { IInventory, ITEMTYPE, RARITY } from "../interfaces";
 import { Item } from "../items";
 import { LuckBooster, ILuckBoosterSettings } from "./luckBooster";
 
@@ -8,12 +8,26 @@ export class UniformBooster extends LuckBooster {
 
     constructor(settings: ILuckBoosterSettings) {
         super(settings);
-        this.numberOfItems = Math.min(settings.numberOfItems, 4);
+        this.numberOfItems = Math.max(settings.numberOfItems, 4);
+    }
+
+    private shouldBeUniform(loot: Item[], newItem: Item): boolean {
+        const uniqueItemTypes = new Set(loot.map(item => item.itemType));
+        const itemTypesLength = Object.keys(ITEMTYPE).length / 2
+        if (uniqueItemTypes.size === itemTypesLength) {
+            return false
+        } 
+        if (loot.some(item => item.itemType === newItem.itemType)) {
+            return true
+        }
+
+        return false
     }
 
     protected uniformItems(loot: Item[], i: number): [Item, number] {
         let [newItem, itemID] = this.UpgradeItem(...super.findElement(i))
-        while (loot.some(item => item.itemType === newItem.itemType)) {
+
+        while (this.shouldBeUniform(loot, newItem)) { 
             [newItem, itemID] = this.UpgradeItem(...super.findElement(i))
         }
 
@@ -33,6 +47,3 @@ export class UniformBooster extends LuckBooster {
         return loot;
     }
 }
-
-console.log(new UniformBooster({ rarity: RARITY.RARE, numberOfItems: 5, upgradeChance: 0.10 }).getBoosterLoot({}))
-console.log(new UniformBooster({ rarity: RARITY.LEGENDARY, numberOfItems: 4, upgradeChance: 0.45 }).getBoosterLoot({}))
